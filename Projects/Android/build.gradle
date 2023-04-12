@@ -2,41 +2,41 @@ apply plugin: 'com.android.application'
 apply from: "${rootProject.projectDir}/XrApp.gradle"
 
 android {
-  // This is the name of the generated apk file, which will have
-  // -debug.apk or -release.apk appended to it.
-  // The filename doesn't effect the Android installation process.
-  // Use only letters to remain compatible with the package name.
-  project.archivesBaseName = "jkxr"
+    // This is the name of the generated apk file, which will have
+    // -debug.apk or -release.apk appended to it.
+    // The filename doesn't effect the Android installation process.
+    // Use only letters to remain compatible with the package name.
+    project.archivesBaseName = "jkxr"
+    ndkVersion '21.0.6113669'
+    defaultConfig {
+        // Gradle replaces the manifest package with this value, which must
+        // be unique on a system.  If you don't change it, a new app
+        // will replace an older one.
+        applicationId "com.drbeef." + project.archivesBaseName
 
-  defaultConfig {
-    // Gradle replaces the manifest package with this value, which must
-    // be unique on a system.  If you don't change it, a new app
-    // will replace an older one.
-    applicationId "com.drbeef." + project.archivesBaseName
+        // override app plugin abiFilters for both 32 and 64-bit support
+        externalNativeBuild {
+            ndk {
+                abiFilters 'arm64-v8a'
+            }
+            ndkBuild {
+                abiFilters 'arm64-v8a'
+            }
+        }
 
-    // override app plugin abiFilters for both 32 and 64-bit support
-      externalNativeBuild {
-          ndk {
-              abiFilters 'arm64-v8a'
-          }
-          ndkBuild {
-              abiFilters 'arm64-v8a'
-          }
-      }
-
-      minSdkVersion 26
-      targetSdkVersion 26
-  }
-
-  sourceSets {
-    main {
-      manifest.srcFile 'AndroidManifest.xml'
-      java.srcDirs = ['../../java']
-      jniLibs.srcDir 'libs'
-      res.srcDirs = ['../../res']
-      assets.srcDirs = ['../../assets']
+        minSdkVersion 26
+        targetSdkVersion 26
     }
-  }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['../../java']
+            jniLibs.srcDir 'libs'
+            res.srcDirs = ['../../res']
+            assets.srcDirs = ['../../assets']
+        }
+    }
 
     packagingOptions {
         exclude 'lib/arm64-v8a/libopenxr_loader.so'

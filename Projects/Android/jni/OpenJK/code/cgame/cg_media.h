@@ -148,9 +148,6 @@ typedef struct {
 
 	qhandle_t	iconMoveSpeed[3];
 
-	qhandle_t 	iconSave;
-	qhandle_t 	iconLoad;
-
 //Chunks
 	qhandle_t	chunkModels[NUM_CHUNK_TYPES][4];
 	sfxHandle_t	chunkSound;

@@ -4966,7 +4966,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker, vec3_
 			damage *= 6;// more damage to turret things
 		}
 	}
-	knockback = damage;
+	knockback = damage / 2;
 
 	//Attempt to apply extra knockback
 	if ( dflags & DAMAGE_EXTRA_KNOCKBACK )
@@ -4995,7 +4995,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker, vec3_
 		knockback = 0;
 	}
 	// figure momentum add, even if the damage won't be taken
-	if ( knockback && (!(dflags&DAMAGE_DEATH_KNOCKBACK) || g_TeamBeefDirectorsCut->integer == 1)) //&& targ->client
+	if ( knockback && (!(dflags&DAMAGE_DEATH_KNOCKBACK) || g_TeamBeefDirectorsCut->value)) //&& targ->client
 	{
 		G_ApplyKnockback( targ, newDir, knockback );
 		G_CheckKnockdown( targ, attacker, newDir, dflags, mod );
@@ -5352,7 +5352,7 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker, vec3_
 				{//special case because this is shotgun-ish damage, we need to multiply the knockback
 					knockback *= 12;//*6 for 6 flechette shots
 				}
-				else if(g_TeamBeefDirectorsCut->integer == 1)
+				else if(g_TeamBeefDirectorsCut->value)
 				{
 					knockback *= 2;
 				}

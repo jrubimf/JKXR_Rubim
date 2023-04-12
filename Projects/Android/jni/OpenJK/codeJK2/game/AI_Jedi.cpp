@@ -2893,8 +2893,8 @@ gentity_t *Jedi_FindEnemyInCone( gentity_t *self, gentity_t *fallback, float min
 
 	for ( e = 0 ; e < 3 ; e++ )
 	{
-		mins[e] = self->currentOrigin[e] - 1024;
-		maxs[e] = self->currentOrigin[e] + 1024;
+		mins[e] = self->currentOrigin[e] - 2048;
+		maxs[e] = self->currentOrigin[e] + 2048;
 	}
 	numListedEntities = gi.EntitiesInBox( mins, maxs, entityList, MAX_GENTITIES );
 

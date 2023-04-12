@@ -123,7 +123,6 @@ void CorpsePhysics( gentity_t *self )
 		}
 	}
 
-	// Note: We want it to make non solid. Fuck collision on dead enemies.
 	if ( true )
 	{//don't turn "nonsolid" until about 1 second after actual death
 

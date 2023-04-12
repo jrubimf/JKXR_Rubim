@@ -215,26 +215,20 @@ float forceJumpStrength[NUM_FORCE_POWER_LEVELS] =
                 840
         };
 
-// Jump heights for each force power level
-// Normal jump (+stepheight+crouchdiff = 66)
-// Note: Increased by 25% from original values
 float forceJumpHeight[NUM_FORCE_POWER_LEVELS] =
         {
-                40, // Level 1
-                120, // Level 2
-                240, // Level 3
-                480 // Level 4
+                32,//normal jump (+stepheight+crouchdiff = 66)
+                96,//(+stepheight+crouchdiff = 130)
+                192,//(+stepheight+crouchdiff = 226)
+                384//(+stepheight+crouchdiff = 418)
         };
 
-// Maximum jump heights for each force power level
-// Normal jump (32+stepheight(18)+crouchdiff(24) = 74)
-// Note: Increased by 25% from original values
 float forceJumpHeightMax[NUM_FORCE_POWER_LEVELS] =
         {
-                83, // Level 1
-                162, // Level 2
-                282, // Level 3
-                532 // Level 4
+                66,//normal jump (32+stepheight(18)+crouchdiff(24) = 74)
+                130,//(96+stepheight(18)+crouchdiff(24) = 138)
+                226,//(192+stepheight(18)+crouchdiff(24) = 234)
+                418//(384+stepheight(18)+crouchdiff(24) = 426)
         };
 
 float forcePushPullRadius[NUM_FORCE_POWER_LEVELS] =
@@ -301,24 +295,22 @@ int mindTrickTime[NUM_FORCE_POWER_LEVELS] =
                 15000
         };
 
-// Saber throw distances for each force power level
-// Note: Doubled from original values
+//NOTE: keep in synch with table below!!!
 int saberThrowDist[NUM_FORCE_POWER_LEVELS] =
         {
-                0, // none
-                512,
-                800,
-                800
+                0,//none
+                512, // Doubled from 256
+                800, // Doubled from 400
+                800 // Doubled from 400
         };
 
-// Squared saber throw distances for each force power level
-// Note: Doubled from original values
+//NOTE: keep in synch with table above!!!
 int saberThrowDistSquared[NUM_FORCE_POWER_LEVELS] =
         {
-                0, // none
-                262144,
-                640000,
-                640000
+                0,//none
+                262144, // Doubled from 65536
+                640000, // Doubled from 160000
+                640000 // Doubled from 160000
         };
 
 
@@ -7297,8 +7289,8 @@ static void WP_ForcePowerRun(gentity_t *self, forcePowers_t forcePower, usercmd_
             } else if (self->client->ps.forcePowerDebounce[FP_HEAL] <
                        level.time) {//time to heal again
                 if (WP_ForcePowerAvailable(self, forcePower, 4)) {//have available power
-                    self->health++;
-                    self->client->ps.forceHealCount += 5;
+                    self->health += 3;
+                    self->client->ps.forceHealCount++;
                     if (self->client->ps.forcePowerLevel[FP_HEAL] > FORCE_LEVEL_2) {
                         self->client->ps.forcePowerDebounce[FP_HEAL] = level.time + 50;
                     } else {

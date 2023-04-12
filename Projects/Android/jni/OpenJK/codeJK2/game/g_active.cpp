@@ -1811,7 +1811,7 @@ extern void CG_ChangeWeapon( int num );
 
 	if ( ent->client->ps.weapon == WP_SABER )
 	{
-		 ent->client->ps.saberActive = ent->owner->alt_fire;
+		 ent->client->ps.saberActive = qfalse;
 	}
 
 	// We'll leave the gun pointed in the direction it was last facing, though we'll cut out the pitch
