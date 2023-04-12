@@ -191,6 +191,8 @@ void G_ReflectMissile( gentity_t *ent, gentity_t *missile, vec3_t forward )
 				}
 			}
 			VectorNormalize( bounce_dir );
+			//lets increase the damage for awesome reflects
+			missile->damage *= 5;
 			reflected = qtrue;
 		}
 	}
