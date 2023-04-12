@@ -2857,7 +2857,7 @@ void CG_DrawItemSelector( void )
 	{
 		frac = 1.0f;
 	}
-	cgi_Cvar_Set("timescale", "0.22");
+	cgi_Cvar_Set("timescale", "0.1");
 
 	vec3_t controllerOrigin, controllerAngles, controllerOffset, selectorOrigin;
 	if (cg.itemSelectorType >= ST_FORCE_POWER)
