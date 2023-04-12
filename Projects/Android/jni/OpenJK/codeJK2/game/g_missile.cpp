@@ -148,6 +148,9 @@ void G_ReflectMissile(gentity_t *ent, gentity_t *missile, vec3_t forward) {
     //save the original speed
     speed = VectorNormalize(missile->s.pos.trDelta);
 
+    //lets increase the damage for awesome reflects
+    missile->damage *= 5;
+
     if (ent && owner && owner->client && !owner->client->ps.saberInFlight &&
         (owner->client->ps.forcePowerLevel[FP_SABER_DEFENSE] > FORCE_LEVEL_2 ||
          (owner->client->ps.forcePowerLevel[FP_SABER_DEFENSE] > FORCE_LEVEL_1 && !Q_irand(0,
