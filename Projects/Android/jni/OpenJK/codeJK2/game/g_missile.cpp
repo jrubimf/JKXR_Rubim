@@ -151,19 +151,26 @@ void G_ReflectMissile(gentity_t *ent, gentity_t *missile, vec3_t forward) {
     //lets increase the damage for awesome reflects
     missile->damage *= 5;
 
-    if (ent && owner && owner->client && !owner->client->ps.saberInFlight &&
-        (owner->client->ps.forcePowerLevel[FP_SABER_DEFENSE] > FORCE_LEVEL_2 ||
-         (owner->client->ps.forcePowerLevel[FP_SABER_DEFENSE] > FORCE_LEVEL_1 && !Q_irand(0,
-                                                                                          3)))) {//if high enough defense skill and saber in-hand (100% at level 3, 25% at level 2, 0% at level 1), reflections are perfectly deflected toward an enemy
+    if (ent && owner && owner->client && !owner->client->ps.saberInFlight) {
+
+    }
+
+    if (ent && owner && owner->client &&
+        !owner->client->ps.saberInFlight) {//if high enough defense skill and saber in-hand (100% at level 3, 25% at level 2, 0% at level 1), reflections are perfectly deflected toward an enemy
         gentity_t *enemy;
         if (owner->enemy && Q_irand(0, 3)) {//toward current enemy 75% of the time
             enemy = owner->enemy;
         } else {//find another enemy
-            enemy = Jedi_FindEnemyInCone(owner, owner->enemy, 0.3f);
+            enemy = Jedi_FindEnemyInCone(owner, owner->enemy, 0.6f);
         }
         if (enemy) {
             vec3_t bullseye;
-            CalcEntitySpot(enemy, SPOT_HEAD, bullseye);
+            if (Q_irand(0,1)) {
+                CalcEntitySpot(enemy, SPOT_CHEST, bullseye);
+            } else
+            {
+                CalcEntitySpot(enemy, SPOT_HEAD, bullseye);
+            }
             bullseye[0] += Q_irand(-4, 4);
             bullseye[1] += Q_irand(-4, 4);
             bullseye[2] += Q_irand(-16, 4);
