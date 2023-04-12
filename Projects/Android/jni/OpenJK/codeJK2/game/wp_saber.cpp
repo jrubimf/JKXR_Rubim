@@ -301,23 +301,26 @@ int mindTrickTime[NUM_FORCE_POWER_LEVELS] =
                 15000
         };
 
-//NOTE: keep in synch with table below!!!
+// Saber throw distances for each force power level
+// Note: Doubled from original values
 int saberThrowDist[NUM_FORCE_POWER_LEVELS] =
         {
-                0,//none
-                256,
-                400,
-                400
+                0, // none
+                512,
+                800,
+                800
         };
 
-//NOTE: keep in synch with table above!!!
+// Squared saber throw distances for each force power level
+// Note: Doubled from original values
 int saberThrowDistSquared[NUM_FORCE_POWER_LEVELS] =
         {
-                0,//none
-                65536,
-                160000,
-                160000
+                0, // none
+                262144,
+                640000,
+                640000
         };
+
 
 int parryDebounce[NUM_FORCE_POWER_LEVELS] =
         {
