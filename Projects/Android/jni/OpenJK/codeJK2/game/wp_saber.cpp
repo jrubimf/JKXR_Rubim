@@ -232,9 +232,9 @@ float forceJumpHeight[NUM_FORCE_POWER_LEVELS] =
 float forceJumpHeightMax[NUM_FORCE_POWER_LEVELS] =
         {
                 83, // Level 1
-                162.5, // Level 2
-                282.5, // Level 3
-                532.5 // Level 4
+                162, // Level 2
+                282, // Level 3
+                532 // Level 4
         };
 
 float forcePushPullRadius[NUM_FORCE_POWER_LEVELS] =

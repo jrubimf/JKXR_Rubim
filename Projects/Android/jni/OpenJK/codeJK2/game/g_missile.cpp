@@ -147,13 +147,7 @@ void G_ReflectMissile(gentity_t *ent, gentity_t *missile, vec3_t forward) {
 
     //save the original speed
     speed = VectorNormalize(missile->s.pos.trDelta);
-
-    //lets increase the damage for awesome reflects
-    missile->damage *= 5;
-
-    if (ent && owner && owner->client && !owner->client->ps.saberInFlight) {
-
-    }
+    speed += 2;
 
     if (ent && owner && owner->client &&
         !owner->client->ps.saberInFlight) {//if high enough defense skill and saber in-hand (100% at level 3, 25% at level 2, 0% at level 1), reflections are perfectly deflected toward an enemy
@@ -192,6 +186,7 @@ void G_ReflectMissile(gentity_t *ent, gentity_t *missile, vec3_t forward) {
                 }
             }
             VectorNormalize(bounce_dir);
+            missile->damage *= 5;
             reflected = qtrue;
         }
     }
