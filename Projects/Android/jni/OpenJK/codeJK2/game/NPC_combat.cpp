@@ -2973,14 +2973,14 @@ void NPC_AimAdjust( int change )
 	}
 	if ( TIMER_Done( NPC, "aimDebounce" ) )
 	{
-		NPCInfo->currentAim += change;
+		NPCInfo->currentAim += (change > 0) ? (change * 2) : change;
 		if ( NPCInfo->currentAim > NPCInfo->stats.aim )
 		{//can never be better than max aim
 			NPCInfo->currentAim = NPCInfo->stats.aim;
 		}
-		else if ( NPCInfo->currentAim < -30 )
+		else if ( NPCInfo->currentAim < -15 )
 		{//can never be worse than this
-			NPCInfo->currentAim = -30;
+			NPCInfo->currentAim = -15;
 		}
 
 		//Com_Printf( "%s new aim = %d\n", NPC->NPC_type, NPCInfo->currentAim );
@@ -2996,7 +2996,7 @@ void G_AimSet( gentity_t *self, int aim )
 {
 	if ( self->NPC )
 	{
-		self->NPC->currentAim = aim;
+		self->NPC->currentAim = aim * 2;
 		//Com_Printf( "%s new aim = %d\n", self->NPC_type, self->NPC->currentAim );
 
 		int debounce = 500+(3-g_spskill->integer)*100;
