@@ -123,7 +123,8 @@ void CorpsePhysics( gentity_t *self )
 		}
 	}
 
-	if ( level.time - self->s.time > 500 )
+	// Note: We want it to make non solid. Fuck collision on dead enemies.
+	if ( true )
 	{//don't turn "nonsolid" until about 1 second after actual death
 
 		if ((self->client->NPC_class != CLASS_MARK1) && (self->client->NPC_class != CLASS_INTERROGATOR))	// The Mark1 & Interrogator stays solid.
