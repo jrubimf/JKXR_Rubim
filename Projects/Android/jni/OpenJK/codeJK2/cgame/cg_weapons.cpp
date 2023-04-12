@@ -2857,7 +2857,8 @@ void CG_DrawItemSelector( void )
 	{
 		frac = 1.0f;
 	}
-	cgi_Cvar_Set("timescale", "0.22");
+	// Note: Let's make slower so the player can react better.
+	cgi_Cvar_Set("timescale", "0.10");
 
 	vec3_t controllerOrigin, controllerAngles, controllerOffset, selectorOrigin;
 	if (cg.itemSelectorType >= ST_FORCE_POWER)
