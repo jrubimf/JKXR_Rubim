@@ -8080,7 +8080,7 @@ static void WP_ForcePowerRun( gentity_t *self, forcePowers_t forcePower, usercmd
 			if ( WP_ForcePowerAvailable( self, forcePower, 4 ) )
 			{//have available power
 				self->health++;
-				self->client->ps.forceHealCount++;
+				self->client->ps.forceHealCount += 5;
 				if ( self->client->ps.forcePowerLevel[FP_HEAL] > FORCE_LEVEL_2 )
 				{
 					self->client->ps.forcePowerDebounce[FP_HEAL] = level.time + 50;
